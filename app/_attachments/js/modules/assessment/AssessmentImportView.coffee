@@ -5,11 +5,12 @@ class AssessmentImportView extends Backbone.View
     'click .back'   : 'back'
 
   initialize: ->
+    console.log "checking with " + Tangerine.config.address.cloud.host+":"+Tangerine.config.address.port
     @docsRemaining = 0
     @serverStatus = "checking..."
     $.ajax
       dataType: "jsonp"
-      url: Tangerine.config.address.cloud.host+":"+Tangerine.config.address.port+"/"
+      url: "http://"+Tangerine.config.address.cloud.host+":"+Tangerine.config.address.port
       success: (a, b) =>
         @serverStatus = "Ok"
         @updateServerStatus()

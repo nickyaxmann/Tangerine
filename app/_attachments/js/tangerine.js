@@ -886,7 +886,7 @@ Router = (function(_super) {
     return Tangerine.user.verify({
       isAdmin: function() {
         $("#version-uuid").html("Updating...");
-        return $.couch.replicate(Tangerine.config.address.cloud.host + "/" + Tangerine.config.address.cloud.dbName, Tangerine.config.address.local.dbName, {
+        return $.couch.replicate("http://" + Tangerine.config.address.cloud.host + ":" + Tangerine.config.address.port + "/" + Tangerine.config.address.cloud.dbName, Tangerine.config.address.local.dbName, {
           success: function() {
             $("#version-uuid").html("Successful update, now refreshing app...");
             return _.delay(function() {

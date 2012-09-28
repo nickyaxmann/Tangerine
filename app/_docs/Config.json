@@ -3,7 +3,7 @@
 	{
 		"cloud" :
 		{
-			"host"    : "http://tangerine.iriscouch.com",
+			"host"    : "tangerine.xen.prgmr.com",
 			"login"   : "tangerine:tangytangerine",
 			"dbName"  : "tangerine"
 		},

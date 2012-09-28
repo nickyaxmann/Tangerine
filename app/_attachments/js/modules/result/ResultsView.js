@@ -24,7 +24,7 @@ ResultsView = (function(_super) {
   ResultsView.prototype.cloud = function() {
     var _this = this;
     if (this.available.cloud.ok) {
-      $.couch.replicate(Tangerine.config.address.local.dbName, Tangerine.config.address.cloud.host + "/" + Tangerine.config.address.cloud.dbName, {
+      $.couch.replicate(Tangerine.config.address.local.dbName, "http://" + Tangerine.config.address.cloud.host + ":" + Tangerine.config.address.port + "/" + Tangerine.config.address.cloud.dbName, {
         success: function() {
           return _this.$el.find(".status").find(".info_box").html("Results synced to cloud successfully");
         },
@@ -99,7 +99,7 @@ ResultsView = (function(_super) {
     var _this = this;
     return $.ajax({
       dataType: "jsonp",
-      url: Tangerine.config.address.cloud.host + ":" + Tangerine.config.address.port + "/",
+      url: "http://" + Tangerine.config.address.cloud.host + ":" + Tangerine.config.address.port + "/",
       success: function(a, b) {
         return _this.available.cloud.ok = true;
       },

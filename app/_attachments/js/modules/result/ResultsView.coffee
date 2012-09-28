@@ -10,7 +10,7 @@ class ResultsView extends Backbone.View
     if @available.cloud.ok
       $.couch.replicate(
         Tangerine.config.address.local.dbName,
-        Tangerine.config.address.cloud.host+"/"+Tangerine.config.address.cloud.dbName,
+        "http://"+Tangerine.config.address.cloud.host+":"+Tangerine.config.address.port+"/"+Tangerine.config.address.cloud.dbName,
           success:      =>
             @$el.find(".status").find(".info_box").html "Results synced to cloud successfully"
           error: (a, b) =>
@@ -67,7 +67,7 @@ class ResultsView extends Backbone.View
     # Detect Cloud
     $.ajax
       dataType: "jsonp"
-      url: Tangerine.config.address.cloud.host+":"+Tangerine.config.address.port+"/"
+      url: "http://"+Tangerine.config.address.cloud.host+":"+Tangerine.config.address.port+"/"
       success: (a, b) =>
         @available.cloud.ok = true
       error: (a, b) =>
