@@ -4,9 +4,16 @@
 
 Skip Subtest:
 
+    @skipSubtest() if subtest("LadyBugSurvey").getAnswer("spotsCounted") > 20 TODO implement convenience method called skipSubtest() that maps to next()
+
 Set Answer:
 
+    @set "Petey Pie" if @getPreviousResult is "Other" TODO implement getPreviousResult to return answer from previous question
+
 Pipe result from previous answer to prompt of current question:
+
+    @setPrompt "What is the age of #{@getPreviousResult("name")}?"
+
 
 
 ## Questions
@@ -66,7 +73,7 @@ references the `SurveyView`, which has spawned `QuestionView`s, one of which is 
 
 `answer` must either be a string (if `Question.type` is `"open"` or `"single"`) or an `Object` if 
 
- setOptions: (options) =>
+  setOptions: (options) =>
 
   setAnswer: (answer) =>
 
